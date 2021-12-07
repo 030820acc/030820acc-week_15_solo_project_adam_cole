@@ -48,7 +48,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsTo(models.Spot, {foreignKey: 'userId'})
+    User.belongsTo(models.Review, {foreignKey: 'userId'})
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
