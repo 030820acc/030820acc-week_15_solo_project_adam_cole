@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Review.associate = function(models) {
     Review.hasOne(models.User, {foreignKey: "userId"})
-    Review.hasOne(models.Spot, {foreignKey: "spotId"})
+    Review.belongsTo(models.Spot, {foreignKey: "spotId"})
   };
   return Review;
 };

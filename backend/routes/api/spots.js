@@ -1,18 +1,22 @@
 const express = require('express')
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const db = require('./db/models');
+const db = require('../../db/models');
 
-
-router.get('/spot/:spot', asyncHandler( async (req, res) => {
-    const {spot} = req.params;
-    const state = await db.Spot.findAll({
-        where: {
-          name: {
-            [Op.iLike]: `%${spot}%`,
-          }}
-        })
-    return res.json(state);
+//api/spots/
+router.get('/', asyncHandler( async (req, res) => {
+    const spots = await db.Spot.findAll()
+    return res.json(spots);
 }));
+
+//api/spots/:id/delete
+router.post('/:id/delete', asyncHandler( async (req, res) => {
+    const {id} = req.params
+    await db.Spot.destroy({where: {
+        id
+    }
+    })
+    return res 
+}))
 
 module.exports = router;
