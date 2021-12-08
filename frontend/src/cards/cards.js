@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 //import * as sessionActions from '../../store/session';
-
+import { deleteSpots } from "../store/spots";
 
 
 function Card({spot}) {
-    const spots = useSelector(state => {
-        return state.spot.list
-    })
+    const dispatch = useDispatch()
+    // const spots = useSelector(state => {
+    //     return state.spot.list
+    // })
 
     const handleEditClick = (e) => {
         e.preventDefault()
@@ -19,7 +20,7 @@ function Card({spot}) {
         console.log('hello from delete')
 
     }
-
+    
     return (
         <div id="card">
             <h2>{spot.name}</h2>
@@ -28,7 +29,7 @@ function Card({spot}) {
             <button onClick={handleEditClick}>edit</button>
             <button onClick={(e) => {
                 e.preventDefault()
-                //dispatch(deleteSpot(spot.id))
+                dispatch(deleteSpots(spot.id))
             }}>delete</button>
         </div>
     )

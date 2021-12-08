@@ -12,11 +12,11 @@ router.get('/', asyncHandler( async (req, res) => {
 //api/spots/:id/delete
 router.post('/:id/delete', asyncHandler( async (req, res) => {
     const {id} = req.params
-    await db.Spot.destroy({where: {
+    const response = await db.Spot.destroy({where: {
         id
     }
     })
-    return res 
+    return res.json(response)
 }))
 
 module.exports = router;

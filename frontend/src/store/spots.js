@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const ADD_SPOT = 'spot/addSpot';
 const LOAD_SPOT = 'spot/loadSpots';
 
@@ -24,7 +26,13 @@ export const getSpots = () => async(dispatch)=> {
 }
 
 export const deleteSpots = (id) => async (dispatch) => {
-  const removed = await fetch(`/api/spots/${id}/delete`)
+  const removed = await csrfFetch(`/api/spots/${id}/delete`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
   if(removed.ok) {
     getSpots();
   }

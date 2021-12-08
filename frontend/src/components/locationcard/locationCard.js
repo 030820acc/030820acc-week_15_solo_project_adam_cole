@@ -9,7 +9,6 @@ function LocationCard() {
         return state.spot.list
     })
 
-    
 
 
     return (
