@@ -16,7 +16,7 @@ function Homepage() {
 
   useEffect(() => {
     dispatch(getSpots());
-  });
+  }, [dispatch]);
   
   return (
     <div className='searchPageHeader'>
