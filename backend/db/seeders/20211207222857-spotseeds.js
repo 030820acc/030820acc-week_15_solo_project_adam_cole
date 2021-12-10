@@ -17,7 +17,7 @@ module.exports = {
     },
     {
       name: "Moria",
-      userId: 2,
+      userId: 1,
       photoUrl: 'https://cdnb.artstation.com/p/assets/images/images/040/445/069/large/adam-breen-moria-final2.jpg?1628864640',
       description: "Delightful underground getaway!! Pls do not leave any food out there are creatures here youre not in dale anymore sweetheart ;)"
     },

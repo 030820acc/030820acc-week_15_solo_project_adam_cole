@@ -8,15 +8,18 @@ import LocationCard from "../locationcard/locationCard";
 function Homepage() {
   const dispatch = useDispatch();
   const [searchval, setsearchval] = useState('');
+  
 
   const spots = useSelector(state => {
     return state.spot.list
   })
-  
+  const user = useSelector(state => {
+    return state.user
+  })
 
   useEffect(() => {
     dispatch(getSpots());
-  }, [dispatch]);
+  }, []);
   
   return (
     <div className='searchPageHeader'>

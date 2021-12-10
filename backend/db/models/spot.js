@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT
   }, {});
   Spot.associate = function(models) {
-    Spot.hasOne(models.User, {foreignKey: 'userId'})
+    Spot.belongsTo(models.User, {foreignKey: 'userId'})
     Spot.hasMany(models.Review, {foreignKey: 'spotId'})
   };
   return Spot;

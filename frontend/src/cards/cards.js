@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from "react-router-dom";
 //import * as sessionActions from '../../store/session';
-import { deleteSpots } from "../store/spots";
+import { deleteSpot } from "../store/spots";
 
 
 function Card({spot}) {
     const dispatch = useDispatch()
-    // const spots = useSelector(state => {
-    //     return state.spot.list
-    // })
+    
+    const user = useSelector(state => {
+        return state.session.user
+    })
+    
 
     const handleEditClick = (e) => {
         e.preventDefault()
@@ -21,15 +24,19 @@ function Card({spot}) {
 
     }
     
+ 
+
     return (
         <div id="card">
             <h2>{spot.name}</h2>
             <img src={spot.photoUrl}></img>
             <p>{spot.description}</p>
-            <button onClick={handleEditClick}>edit</button>
-            <button onClick={(e) => {
+            <NavLink to={`/api/spots/${spot.id}`}>View</NavLink>
+            <button hidden={!(user.id === spot.userId)} onClick={(e) => {
                 e.preventDefault()
-                dispatch(deleteSpots(spot.id))
+                if(spot.userId === user.id) {
+                    dispatch(deleteSpot(spot.id))
+                }
             }}>delete</button>
         </div>
     )

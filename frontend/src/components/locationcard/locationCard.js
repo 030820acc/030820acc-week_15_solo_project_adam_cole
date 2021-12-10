@@ -15,7 +15,7 @@ function LocationCard() {
         <div className="cardArea">
             {spots.map((spot) => {
                 return (
-                    <Card spot={spot}/>
+                    <Card key={spot.id} spot={spot}/>
                 )
             })}
         </div>

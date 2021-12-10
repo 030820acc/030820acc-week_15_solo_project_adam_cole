@@ -25,7 +25,7 @@ export const getSpots = () => async(dispatch)=> {
   }
 }
 
-export const deleteSpots = (id) => async (dispatch) => {
+export const deleteSpot = (id) => async (dispatch) => {
   const removed = await csrfFetch(`/api/spots/${id}/delete`, {
     method: "POST",
     headers: {
@@ -34,7 +34,21 @@ export const deleteSpots = (id) => async (dispatch) => {
   })
 
   if(removed.ok) {
-    getSpots();
+    dispatch(getSpots());
+  }
+}
+
+export const editSpot = (id, payload) => async (dispatch) => {
+  const edited = await csrfFetch(`/api/spots/${id}/edit`, {
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: payload
+  })
+
+  if(edited.ok) {
+    dispatch(getSpots());
   }
 }
 

@@ -19,4 +19,15 @@ router.post('/:id/delete', asyncHandler( async (req, res) => {
     return res.json(response)
 }))
 
+//api/spots/${id}/edit
+router.put('/:id/edit', asyncHandler(async (req, res) => {
+    const {id} = req.params
+    const {payload} = req.body
+    console.log(payload)
+    const spot = await db.Spot.findByPk(id)
+    const response = await spot.update(payload)
+
+    return res.json(response)
+}))
+
 module.exports = router;

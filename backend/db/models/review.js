@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     spotId: DataTypes.INTEGER
   }, {});
   Review.associate = function(models) {
-    Review.hasOne(models.User, {foreignKey: "userId"})
+    Review.belongsTo(models.User, {foreignKey: "userId"})
     Review.belongsTo(models.Spot, {foreignKey: "spotId"})
   };
   return Review;
