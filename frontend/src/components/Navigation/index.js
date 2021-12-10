@@ -15,16 +15,16 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink id="login" to="/login">Log In</NavLink>
+        <NavLink id="signup" to="/signup">Sign Up</NavLink>
       </>
     );
   }
 
   return (
-    <ul>
+    <ul className="navbar">
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/"><img id='logo' src='https://cdn.shopify.com/s/files/1/0077/0270/8279/products/DnDAmpersand_white_2048x.jpg?v=1567120972'></img></NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

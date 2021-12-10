@@ -23,10 +23,8 @@ export const createSpot = (data) => async(dispatch) => {
     },
     body: JSON.stringify(data)
   })
+  dispatch(getSpots());
 
-  if(created.ok) {
-    dispatch(getSpots());
-  }
 }
 
 export const getSpots = () => async(dispatch)=> {

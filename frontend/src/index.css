@@ -1,9 +1,15 @@
 /* TODO Add site wide styles */
+body {
+    background-color: #e94445;
+    color:white;
+}
+
 #card{
     display: flex;
     border: solid black 2px;
     align-items: center;
-    background-color: blanchedalmond;
+    background-color: #cec2ae;
+    color: black;
 }
 
 #card > img {

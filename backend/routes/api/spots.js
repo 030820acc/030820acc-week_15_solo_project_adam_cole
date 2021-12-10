@@ -14,7 +14,7 @@ router.post('/new', asyncHandler(async (req, res) => {
     const {name, photoUrl, description, userId} = req.body;
     // console.log("this is data", data)
     const newspot = await db.Spot.create({name, photoUrl, description, userId});
-    return newspot;
+    return res.json(newspot);
 }))
 
 //api/spots/:id/delete
@@ -38,7 +38,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
     {name, photoUrl, description}
     )
 
-    return response;
+    return res.json(response);
 //    const spot = await db.Spot.findByPk(id)
 //    const response = await spot.update()
     // const {payload} = req.body

@@ -1,0 +1,33 @@
+#logo{
+    height: 100px;
+    width: 100px;
+    margin-right: 25px;
+}
+
+.navbar{
+    list-style-type: none;
+    display:flex;
+    align-items: center;
+}
+
+.navbar > li {
+    display:flex;
+    align-items: center;
+    width: 350px;
+    justify-content: space-around;
+}
+
+#login{
+    text-decoration: none;
+    padding: 5px;
+    background-color: #cec2ae;
+    border-radius: 5px;
+}
+
+#signup{
+    text-decoration: none;
+    padding: 5px;
+    background-color: #cec2ae;
+    border-radius: 5px;
+}
+
