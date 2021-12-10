@@ -19,7 +19,7 @@ module.exports = {
       },
       photoUrl: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       description: {
         allowNull: false,

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Spot = sequelize.define('Spot', {
     name: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    photoUrl: DataTypes.STRING,
+    photoUrl: DataTypes.TEXT,
     description: DataTypes.TEXT
   }, {});
   Spot.associate = function(models) {

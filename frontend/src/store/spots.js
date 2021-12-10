@@ -15,7 +15,19 @@ const loadSpots = (list) => ({
       list
 });
 
+export const createSpot = (data) => async(dispatch) => {
+  const created = await csrfFetch(`/api/spots/new`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
 
+  if(created.ok) {
+    dispatch(getSpots());
+  }
+}
 
 export const getSpots = () => async(dispatch)=> {
   const spots = await fetch('/api/spots');
@@ -38,17 +50,33 @@ export const deleteSpot = (id) => async (dispatch) => {
   }
 }
 
-export const editSpot = (id, payload) => async (dispatch) => {
-  const edited = await csrfFetch(`/api/spots/${id}/edit`, {
+// export const editSpot = (id, payload) => async (dispatch) => {
+//   const edited = await csrfFetch(`/api/spots/${id}/edit`, {
+//     method: "PUT",
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: payload
+//   })
+
+//   if(edited.ok) {
+//     dispatch(getSpots());
+//   }
+// }
+
+export const editSpot = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${data.spot.id}`, {
     method: "PUT",
     headers: {
       'Content-Type': 'application/json'
     },
-    body: payload
+    body: JSON.stringify(data)
   })
 
-  if(edited.ok) {
-    dispatch(getSpots());
+  if(response.ok) {
+    const edited = await response.json();
+    dispatch(getSpots())
+    return edited
   }
 }
 
