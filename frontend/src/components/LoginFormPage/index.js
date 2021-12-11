@@ -49,6 +49,11 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button onClick={(e) => {
+        e.preventDefault()
+        setCredential('demo@user.io')
+        setPassword('password')
+      }}>Demo Login</button>
     </form>
   );
 }

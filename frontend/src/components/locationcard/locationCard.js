@@ -17,7 +17,7 @@ function LocationCard() {
     const spots = useSelector(state => {
         return state.spot.list
     })
-    console.log(spots)
+    
     const user = useSelector(state => {
         return state.session.user
     })
@@ -54,7 +54,7 @@ function LocationCard() {
 
     return (
         <div className="cardArea">
-            <button onClick={()=> {setHidden(!hidden)}}>New Spot</button>
+            <button hidden={!user} onClick={()=> {setHidden(!hidden)}}>New Spot</button>
             <form hidden={hidden}>
                 {formErrors.map(error => {
                     return (<p>{error}</p>)
