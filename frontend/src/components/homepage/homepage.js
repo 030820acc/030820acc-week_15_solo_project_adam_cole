@@ -3,22 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { getSpots } from "../../store/spots";
 import LocationCard from "../locationcard/locationCard";
-
+import { getReviews } from "../../store/spots";
 
 function Homepage() {
   const dispatch = useDispatch();
-  const [searchval, setsearchval] = useState('');
   
-
-  const spots = useSelector(state => {
-    return state.spot.list
-  })
-  const user = useSelector(state => {
-    return state.user
-  })
 
   useEffect(() => {
     dispatch(getSpots());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getReviews());
   }, []);
   
   return (
